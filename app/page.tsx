@@ -18,7 +18,7 @@ export default function Page() {
                         wrapperClassName: 'm-0 p-0 inline text-3xl font-bold'
                     }}
                 />
-                <Link href="/about" className="mt-4 text-2xl bg-pink-500 p-2 rounded-md text-white hover:text-black">Let's get started</Link>
+                <Link href="/about" className="mt-4 text-2xl bg-pink-500 p-3 transform -skew-x-12 text-white">Let's get started</Link>
             </section>
         </>
     )
