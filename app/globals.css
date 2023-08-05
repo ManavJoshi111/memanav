@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define the neon button style */
+.neon-button {
+    box-shadow: 0 0 8px #FF0066;
+}

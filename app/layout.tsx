@@ -1,56 +1,67 @@
 "use client";
 import './globals.css';
+import { useState } from 'react';
+import colorContext from './colorContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { HomeIcon, UserCircleIcon, BriefcaseIcon, PhoneArrowDownLeftIcon } from '@heroicons/react/24/outline';
+
 
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const [color, setColor] = useState<string>("bg-[#FF0066]");
     const PathName = usePathname();
     const SideBarLinks = [
         {
-            label: "Home",
+            label: <HomeIcon className="h-8 w-8 text-white stroke-2" />,
             href: "/",
-            bgColor: "#FF0FE9"
+            bgColor: "bg-[#FF0066]"
         },
         {
-            label: "About",
+            label: <UserCircleIcon className="h-8 w-8 text-white stroke-2" />,
             href: "/about",
-            bgColor: "black"
+            bgColor: "bg-[#00FF00]"
         },
         {
-            label: "Projects",
+            label: <BriefcaseIcon className="h-8 w-8 text-white stroke-2" />,
             href: "/projects",
-            bgColor: "#2C32ED"
+            bgColor: "bg-[#FF0000] "
         },
         {
-            label: "Contact",
+            label: <PhoneArrowDownLeftIcon className="h-8 w-8 text-white stroke-2" />,
             href: "/contact",
-            bgColor: "#FEF745"
+            bgColor: "bg-[#00FFFF]"
         }
     ];
 
+    const handleLinkClick = (path: string, bgColor: string) => {
+        if (path === PathName) {
+            setColor(bgColor);
+        }
+    }
     return (
         <html lang="en">
             <body className="bg-black text-white m-0 p-0 flex h-screen">
-                <nav className="border-r border-gray-700 h-full p-2 w-40">
-                    <ul className="list-none m-0 p-0 flex flex-col h-full justify-around align-center">
-                        {
-                            SideBarLinks.map((link, index) => {
-                                console.log("Pathname: ", PathName);
-                                return (
-                                    <li key={index} className="m-0 p-0 flex align-center justify-center">
-                                        <Link href={link.href} className={"text-white bg-[" + link.bgColor + "]" + (PathName === link.href ? " active" : "")} >{link.label}</Link>
-                                    </li>
-                                );
-                            })
-                        }
+                <nav className={`border-r border-white h-full w-40 p-0`}>
+                    <ul className="list-none m-0 p-0 flex flex-col h-full w-full justify-around align-center">
+                        <colorContext.Provider value={{ color, setColor }}>
+                            {
+                                SideBarLinks.map((link, index) => {
+                                    return (
+                                        <li key={index} className="m-0 p-0 flex align-center justify-center">
+                                            <Link href={link.href} className={`text-white flex items-center justify-center w-full p-2 font-bold ${(PathName === link.href ? link.bgColor : "")}`} onClick={() => { handleLinkClick(link.href, link.bgColor) }} >{link.label}</Link>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </colorContext.Provider>
                     </ul>
                 </nav>
                 {children}
             </body>
-        </html>
+        </html >
     );
 }
