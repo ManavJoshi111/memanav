@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+/* Define the neon button style */
+body {
+    font-family: 'Special Elite', cursive;
+}
+
+.neon-button {
+    box-shadow: 0 0 8px #FF0066;
+}
+
+.Typewriter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
