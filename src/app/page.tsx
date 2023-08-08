@@ -88,18 +88,21 @@ export default function Page() {
                         detectRetina: true,
                     }}
                 />
-                <div className="text-4xl mb-2">Hey, I am Manav!</div>
-                <Typewriter
-                    options={{
-                        strings: ['An Engineering Student', 'A Competitive Programmer', 'A Full Stack Developer'],
-                        autoStart: true,
-                        loop: true,
-                        delay: 50,
-                        deleteSpeed: 50,
-                        wrapperClassName: 'm-0 p-0 inline text-3xl font-bold text-center'
-                    }}
-                />
-                <Link href="/about" className={`mt-4 text-2xl border-[#FF0066] transition-all duration-300 hover:bg-[#FF0066] p-3 neon-button transform -skew-x-12 text-white`}>Let's get started 🚀</Link>
+                <div className="text-4xl mb-2">Hey, I am <span className="text-[#FF0066] font-bold">Manav</span>!</div>
+                <div className="flex justify-center items-center">
+                    <span className="m-0 p-0 inline text-3xl font-bold text-center">I am&nbsp;</span>
+                    <Typewriter
+                        options={{
+                            strings: ['An Engineering Student', 'A Competitive Programmer', 'A Full Stack Developer'],
+                            autoStart: true,
+                            loop: true,
+                            delay: 50,
+                            deleteSpeed: 50,
+                            wrapperClassName: 'm-0 p-0 inline text-3xl font-bold text-center text-[#FF0066]'
+                        }}
+                    />
+                </div>
+                <Link href="/about" className={`mt-4 text-2xl border-[#FF0066] transition-all duration-300 hover:bg-[#FF0066] p-3 neon-button transform -skew-x-12 text-white`}>Let&apos;s get started 🚀</Link>
             </section >
         </>
     )

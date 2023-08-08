@@ -4,8 +4,8 @@ import Manav_Illustration from "../../assets/Manav_Illustration.jpg";
 export default function page() {
     return (
         <>
-            <div className="container flex justify-between p-10 items-center flex-col h-screen">
-                <div className="imgContainer">
+            <div className="container flex justify-between p-6 items-center flex-col h-screen">
+                <div className="imgContainer shadow-slate-50">
                     <Image src={Manav_Illustration} height={300} alt="Manav Illustration" />
                 </div>
                 <div className="aboutContainer mt-4">
