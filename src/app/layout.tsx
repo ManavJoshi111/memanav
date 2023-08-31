@@ -2,10 +2,10 @@
 import './globals.css';
 import { useState } from 'react';
 import colorContext from '../context/colorContext';
+import { HomeIcon, BriefcaseIcon, UserCircleIcon, PhoneIcon } from '@heroicons/react/20/solid';
 import { Tooltip } from 'react-tooltip';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
-import { HomeIcon, UserCircleIcon, BriefcaseIcon, PhoneArrowDownLeftIcon } from '@heroicons/react/24/outline';
 
 
 export default function RootLayout({
@@ -15,7 +15,6 @@ export default function RootLayout({
 }) {
     const [color, setColor] = useState<string>("bg-[#FF0066]");
     const PathName = usePathname();
-    console.log("Current path: ", PathName);
     const SideBarLinks = [
         {
             label: <HomeIcon className="h-8 w-8 text-white stroke-2" />,
@@ -36,7 +35,7 @@ export default function RootLayout({
             tooltip: "Projects 🛠️"
         },
         {
-            label: <PhoneArrowDownLeftIcon className="h-8 w-8 text-white stroke-2" />,
+            label: <PhoneIcon className="h-8 w-8 text-white stroke-2" />,
             href: "/contact",
             bgColor: "bg-[#00FFFF]",
             tooltip: "Contact 📞"
