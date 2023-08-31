@@ -6,7 +6,7 @@ export default function page() {
         <>
             <div className="container flex justify-between p-6 items-center flex-col h-screen">
                 <div className="imgContainer shadow-slate-50">
-                    <Image src={Manav_Illustration} height={300} alt="Manav Illustration" />
+                    <Image src={Manav_Illustration} height={200} width={200} alt="Manav Illustration" />
                 </div>
                 <div className="aboutContainer mt-4">
                     <h1 className="text-4xl font-bold mb-2 text-center text-[#00FF00]">About Me</h1>
