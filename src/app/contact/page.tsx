@@ -1,4 +1,6 @@
+'use client'
 import Image from 'next/image';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 import GitHubIcon from "../../assets/GitHub.svg";
 import LinkedInIcon from "../../assets/Linkedin.svg";
 import TwitterIcon from "../../assets/Twitter.svg";
@@ -6,13 +8,37 @@ import CodeChefIcon from "../../assets/CodeChef.svg";
 import LeetCodeIcon from "../../assets/LeetCode.svg";
 
 export default function page() {
+
+    function sendEmail(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        emailjs
+            .sendForm(
+                'service_kl0xr6z',
+                'template_8nkqrlq',
+                e.currentTarget,
+                'EOC6wzEEcUdnEgsyi'
+            )
+            .then((res: EmailJSResponseStatus) => {
+                alert('Your message has been sent successfully...!');
+                e.currentTarget?.reset();
+            })
+            .catch((err: Error) => {
+                alert("An error occured!\nPlease try again after sometime!");
+                console.error(err);
+                e.currentTarget?.reset();
+            });
+    }
+
     return (
         <>
             <div className="container">
+                <center>
+                    <h1 className="text-[#00FFFF] p-2 font-bold underline text-4xl">Contact Me!</h1>
+                </center>
                 <center className="">
                     <div className="img-container"></div>
                     <div className="form-container mt-4">
-                        <form className="w-1/2 ">
+                        <form className="w-1/2 " onSubmit={sendEmail}>
                             <div className="form-group">
                                 <input type="text" id="name" className="bg-black mt-0 block w-full px-0.5 border-0 border-b border-[#00FFFF] focus:border-b-2 focus:ring-0 focus:border-[#00FFFF]" placeholder="Enter Your Name" />
                             </div>
@@ -22,7 +48,12 @@ export default function page() {
                             <div className="form-group mt-6">
                                 <textarea id="email" className="bg-black mt-0 block w-full px-0.5 border-0 border-b border-[#00FFFF] focus:border-b-2 focus:ring-0 focus:border-[#00FFFF]" placeholder="Enter Your Message" />
                             </div>
-                            <button className={`mt-4 text-xl font-bold text-black border-[#00FFFF] bg-[#00FFFF] p-3`}>Send 🚀</button>
+                            <button
+                                type='submit'
+                                className={`mt-4 text-2xl border-[#00FFFF] transition-all duration-300 hover:bg-[#00FFFF] p-3 shadow-[#00FFFF] hover:text-black transform -skew-x-12 text-white`}
+                            >
+                                Send 🚀
+                            </button>
                         </form>
                     </div>
                     <div className="socials mt-2 flex justify-center items-center">
